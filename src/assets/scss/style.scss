@@ -1,0 +1,198 @@
+* {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "iranSansWeb";
+}
+body {
+  background-color: rgb(164, 192, 224);
+}
+@mixin flex($jc: center, $ai: center) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+}
+header {
+  height: 70px;
+  background: #333;
+  display: flex;
+  @include flex(space-between);
+  padding: 0 50px;
+  h1 {
+    color: #efefef;
+  }
+  .cart.bump {
+    animation: bump 300ms ease-out;
+    @keyframes bump {
+      0% {
+        transform: scale(1);
+      }
+      10% {
+        transform: scale(0.9);
+      }
+      30% {
+        transform: scale(1.1);
+      }
+      50% {
+        transform: scale(1.15);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  }
+  .cart {
+    cursor: pointer;
+    width: 180px;
+    height: 45px;
+    padding: 4px;
+    border: 2px solid rgb(100, 204, 230);
+    color: rgb(100, 204, 230);
+    transition: 0.4s ease-out;
+    @include flex(space-around);
+    border-radius: 12px;
+    span:nth-child(2) {
+      @include flex();
+      width: 40px;
+      border-radius: 12px;
+      height: 26px;
+      background: rgb(100, 204, 230);
+      color: #000;
+      transition: 0.4s ease-out;
+    }
+    &:hover {
+      border: 2px solid rgb(100, 230, 180);
+      color: rgb(100, 230, 180);
+    }
+    &:hover span:nth-child(2) {
+      background: rgb(100, 230, 180);
+    }
+  }
+}
+.product-list {
+  border-radius: 20px 5px 20px 5px;
+  background: #333;
+  width: 500px;
+  margin: 20px auto;
+  padding: 14px;
+  color: rgb(164, 192, 224);
+  h2 {
+    margin-bottom: 10px;
+  }
+  .product-item {
+    margin-bottom: 10px;
+    background: #555;
+    padding: 10px 8px;
+    width: 100%;
+    border-radius:8px;
+    height: 100px;
+    color: rgb(139, 199, 255);
+    .top {
+      @include flex(space-between, center);
+      .price{
+        @include flex(space-evenly);
+        color: rgb(228, 150, 150);
+        .total{
+          margin-right: 5px;
+          font-size: 17px;
+          font-weight: bold;
+        }
+        .price{
+          font-size: 14px;
+        }
+      }
+    }
+    .bottom{
+      @include flex(space-between);
+      margin-top: 20px;
+      .quantity{
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+      .buttons{
+        button{
+          cursor: pointer;
+          width: 79px;
+          margin-left: 5px;
+          background: rgb(228, 150, 150);
+          font-weight: bold;
+          border-radius: 4px;
+          border: none;
+          font-size: 18px;
+          transition: .4s ease-out;
+          &:nth-child(1):hover{
+            background: rgb(255, 138, 138);
+          }
+          &:nth-child(2):hover{
+            background: rgb(139, 199, 255);
+          }
+        }
+      }
+    }
+  }
+}
+.product-menu{
+  width: 500px;
+  margin: 20px auto;
+  h2{
+    text-align: center;
+  }
+  ul{
+    height: 150px;
+    margin-top: 20px;
+  }
+}
+.menu-item{
+  background: #eee;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  @include flex(space-between);
+  flex-direction: column;
+  height: 100%;
+  padding: 13px 20px;
+  div{
+    @include flex(space-between);
+    width: 100%;
+    span{
+      background: #444;
+      color:  rgb(168, 231, 247);
+      width: 70px;
+      border-radius: 20px;
+      text-align: center;
+    }
+  }
+  strong{
+    text-align: left;
+    width: 100%;
+    font-size: 15px;
+  }
+  button{
+    width: 40%;
+    cursor: pointer;
+    border-radius: 15px;
+    border: 2px solid rgb(76, 169, 192);
+    color:  rgb(69, 165, 189);
+    font-weight: bold;
+    padding: 4px;
+    transition: .4s ease-out;
+    &:hover{
+      background-color:  rgb(100, 204, 230);
+      color: #666;
+      border: 2px dotted  rgb(33, 147, 175);
+      width: 45%;
+    }
+  }
+}
+.notification {
+  @include flex(space-between);
+  padding: 3px 100px ;
+  color: #fff;
+  background-color: rgb(123, 181, 235);
+}
+.notification.success{
+  background-color: #1ad1b9;
+}
+.notification.error{
+  background-color: rgb(255, 138, 138);
+}
